@@ -1,59 +1,55 @@
-﻿/* 1.	Создать класс  Point, разработав следующие элементы класса:
-    a.	Поля:
-    •	int x, y;
-    b.	Конструкторы, позволяющие создать экземпляр класса:
-    •	с нулевыми координатами;
-    •	с заданными координатами.
-    c.	Методы, позволяющие:
-    •	вывести координаты точки на экран;
-    •	рассчитать расстояние от начала координат до точки;
-    •	переместить точку на плоскости на вектор (a, b).
-    d.	Свойства:
-    •	получить-установить координаты точки (доступное для чтений и записи);
-    •	позволяющие умножить координаты точки на скаляр (доступное только для записи). 
-   1.	В класс  Point добавить:
-    a.	Индексатор, позволяющий по индексу 0 обращаться к полю x, по индексу 1 – к полю y, при других значениях индекса выдается сообщение об ошибке.
-    b.	Перегрузку:
-    •	операции ++ (--): одновременно увеличивает (уменьшает) значение полей х и у на 1;
-    •	констант true и false: обращение к экземпляру класса дает значение true, если значение полей x и у совпадает, иначе false;
-    •	операции бинарный +:  одновременно добавляет к полям х и у значение скаляра;
-    •	преобразования типа Point в string (и наоборот).
- */
+﻿/* 1.        Создать класс Point, разработав следующие элементы класса:
+a.        Поля:
+•        int x, y;
+b.        Конструкторы, позволяющие создать экземпляр класса:
+•        с нулевыми координатами;
+•        с заданными координатами.
+c.        Методы, позволяющие:
+•        вывести координаты точки на экран;
+•        рассчитать расстояние от начала координат до точки;
+•        переместить точку на плоскости на вектор (a, b).
+d.        Свойства:
+•        получить-установить координаты точки (доступное для чтений и записи);
+•        позволяющие умножить координаты точки на скаляр (доступное только для записи).
+1.        В класс Point добавить:
+a.        Индексатор, позволяющий по индексу 0 обращаться к полю x, по индексу 1 – к полю y, при других значениях индекса выдается сообщение об ошибке.
+b.        Перегрузку:
+•        операции ++ (--): одновременно увеличивает (уменьшает) значение полей х и у на 1;
+•        констант true и false: обращение к экземпляру класса дает значение true, если значение полей x и у совпадает, иначе false;
+•        операции бинарный +: одновременно добавляет к полям х и у значение скаляра;
+•        преобразования типа Point в string (и наоборот).
+*/
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace PointClass
+namespace Test
 {
     class Point
     {
-        // Поля:  int x, y;
+        // Поля: int x, y;
         int x, y;
 
         // Конструкторы, позволяющие создать экземпляр класса: с нулевыми координатами; с заданными координатами.
-        public Point(int x = 0, int y = 0) 
+        public Point(int x = 0, int y = 0)
         {
             this.x = x;
             this.y = y;
         }
-        
-        // Методы, позволяющие:	вывести координаты точки на экран;
+
+        // Методы, позволяющие:        вывести координаты точки на экран;
         public void Show() { Console.WriteLine("x = {0}, y = {1}", x, y); }
 
         // рассчитать расстояние от начала координат до точки;
         public double Origin() { return Math.Sqrt(x * x + y * y); }
 
         // переместить точку на плоскости на вектор (a, b).
-        public void Displacement(int x, int y) 
+        public void Displacement(int x, int y)
         {
             this.x += x;
             this.y += y;
         }
 
         // Свойства: получить-установить координаты точки (доступное для чтений и записи);
-        public int X 
+        public int X
         {
             set { x = value; }
             get { return x; }
@@ -65,8 +61,8 @@ namespace PointClass
             get { return y; }
         }
 
-        // позволяющие умножить координаты точки на скаляр (доступное только для записи). 
-        public int MultScalX 
+        // позволяющие умножить координаты точки на скаляр (доступное только для записи).
+        public int MultScalX
         {
             set { x *= value; }
         }
@@ -77,7 +73,7 @@ namespace PointClass
         }
 
         // Перегрузку: операции ++ (--): одновременно увеличивает (уменьшает) значение полей х и у на 1;
-        public static Point operator --(Point obj) 
+        public static Point operator --(Point obj)
         {
             obj.x -= 1;
             obj.y -= 1;
@@ -92,7 +88,7 @@ namespace PointClass
         }
 
         // констант true и false: обращение к экземпляру класса дает значение true, если значение полей x и у совпадает, иначе false;
-        public static bool operator false(Point obj) 
+        public static bool operator false(Point obj)
         {
             if (obj.x != obj.y)
                 return false;
@@ -106,8 +102,8 @@ namespace PointClass
             return false;
         }
 
-        // операции бинарный +:  одновременно добавляет к полям х и у значение скаляра;
-        public static Point operator +(Point obj, int scal) 
+        // операции бинарный +: одновременно добавляет к полям х и у значение скаляра;
+        public static Point operator +(Point obj, int scal)
         {
             obj.x += scal;
             obj.y += scal;
@@ -124,14 +120,12 @@ namespace PointClass
         // Индексатор, позволяющий по индексу 0 обращаться к полю x, по индексу 1 – к полю y, при других значениях индекса выдается сообщение об ошибке.
         public int this[int i]
         {
-            get 
+            get
             {
                 if (i == 0)
                     return x;
-                else
-                    if (i == 1) return y;
-                    else
-                        throw new Exception("Error") ;
+                if (i == 1) return y;
+                throw new Exception("Error");
             }
         }
 
@@ -150,18 +144,17 @@ namespace PointClass
             return obj;
         }
     }
-    
+
 
     class Program
     {
         static void Main(string[] args)
         {
-            int x, y;
+            int x;
+            int y;
 
-            Console.Write("Введите координату х: ");
-            x = Int32.Parse(Console.ReadLine());
-            Console.Write("Введите координату y: ");
-            y = Int32.Parse(Console.ReadLine());
+            x = ReadCoord('x');
+            y = ReadCoord('y');
 
             Point point = new Point(x, y);
             Point zeroPoint = new Point();
@@ -203,17 +196,18 @@ namespace PointClass
             point.Show();
             Console.WriteLine();
 
-            Console.WriteLine("операции бинарный +:  одновременно добавляет к полям х и у значение скаляра (point + 5):");
+            Console.WriteLine("операции бинарный +: одновременно добавляет к полям х и у значение скаляра (point + 5):");
             point = point + 5;
             point.Show();
             Console.WriteLine();
 
-            Console.WriteLine("операции бинарный +:  одновременно добавляет к полям х и у значение скаляра (5 + point):");
+            Console.WriteLine("операции бинарный +: одновременно добавляет к полям х и у значение скаляра (5 + point):");
             point = 5 + point;
             point.Show();
             Console.WriteLine();
 
             Console.WriteLine("Константа true и false: обращение к экземпляру класса дает значение true, если значение полей x и у совпадает, иначе false:");
+
             if (point)
                 Console.WriteLine("X = Y");
             else
@@ -230,8 +224,36 @@ namespace PointClass
             point_new.Show();
             Console.WriteLine();
 
-            Console.ReadLine();
+            Console.ReadKey();
+        }
 
+        public static int ReadCoord(char ch)
+        {
+            int x = 0;
+
+            try
+            {
+                Console.Write("Введите координату {0}: ", ch);
+                x = Int32.Parse(Console.ReadLine());
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Формат введенного числа является неправильным. Введите число еще раз.");
+                ReadCoord(ch);
+            }
+            catch (OverflowException)
+            {
+                Console.WriteLine(
+                    "Введенное число, либо меньше значения MinValue или больше значения MaxValue. Введите число еще раз.");
+                ReadCoord(ch);
+            }
+            catch (ArgumentNullException)
+            {
+                Console.WriteLine("Введенный параметр имеет значение null. Введите число еще раз.");
+                ReadCoord(ch);
+            }
+
+            return x;
         }
     }
 }
